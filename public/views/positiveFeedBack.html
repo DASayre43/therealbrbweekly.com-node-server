@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global-css1.css"> 
+    <title>feedback form</title>
+   
+</head>
+<body>
+    <%- include('global/global-navigation-drop-down.html'); -%>
+    <div class="side-content-left"></div>
+    <div class="side-content-right"></div>
+    <div class="center_content">
+        <%- include('global/global-banner.html'); -%>
+        <main>
+            <nav>
+                <section class="content-section">
+                    <h3 class="content-header">positive feedback</h3>
+                    <p class="content-paragraph">
+                         you are here by permited to say nice things about us.
+                    </p>
+
+                    <form action="/feedback" method="POST" enctype="form-data">
+                        <legend>topic</legend>
+                        <input
+                            type="text"
+                            name="topic"
+                        >
+                        <legend>heap praises here</legend>
+                        <textarea class="multiline" placeholder="Type here..." name="content" style="min-height: 200px; min-width: 60%;"></textarea>
+
+                        <legend>filling out this section helps us learn about our demographic</legend>
+                        <legend>filling in any these would be greatly apreciated. vary definently use this data responsibly</legend>
+                        <legend>your age</legend>
+                        <input type="number" name="age">
+
+                        <legend>what country or state you live in</legend>
+                        <input type="text" name="location">
+
+                        <legend>are you a robot from sweden</legend>
+                        <label>
+                            <input type="radio" name="robot" value="yes">
+                            Yes
+                            </label>
+                            <label>
+                            <input type="radio" name="robot" value="no">
+                            No
+                        </label>
+
+                        <legend>do you own a pupet</legend>
+                        <label>
+                            <input type="radio" name="pupet" value="yes">
+                            Yes
+                            </label>
+                            <label>
+                            <input type="radio" name="pupet" value="no">
+                            No
+                        </label>
+
+                        <legend>how would you describe yourself</legend>
+                        <input type="text" name="description">
+
+                        <button type="submit">
+                            Upload
+                        </button>
+                    </form>
+                    
+                </section>
+            </nav>
+        </main>
+        <%- include('global/global-footer.html'); -%>
+    </div>
+    <script src="js/banner1.js"></script>
+    <script src="js/menu1.js"></script>
+    <!-- <script src="js/adds.js"></script> -->
+</body>
+</html>

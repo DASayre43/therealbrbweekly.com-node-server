@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>artical creater</title>
+
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+
+    <h1>article creater</h1>
+
+    <div class="section">
+
+        <h2>upload</h2>
+
+        <!-- <div id="edit" style="display: flexbox; flex-direction: column; flex-wrap: nowrap; "> -->
+
+            <form action="articles/upload" method="POST" enctype="form-data">
+                <legend>name of the artical</legend>
+                <input
+                    type="text"
+                    name="articalName"
+                >
+                <legend>artical text</legend>
+                <textarea class="multiline" placeholder="Type here..." name="articalText" style="min-height: 200px; min-width: 60%;"></textarea>
+                <legend>Hero Image ID</legend>
+
+                <div class="cover-select">
+                    <input
+                        type="text"
+                        id="coverID"
+                        name="coverID"
+                        readonly
+                    >
+
+                    <button type="button" id="chooseImageBtn">
+                        Choose Image
+                    </button>
+                </div>
+                <legend>publishing date</legend>
+                <input type="date" name="date">
+
+                <button type="submit">
+                    Upload
+                </button>
+            </form>
+            
+            
+            <a class="main" href="/manageArticals.html">cancel</a>
+
+        <!-- </div> -->
+
+    </div>
+
+    <!-- Image Picker Modal -->
+    <div id="imageModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2>Select Cover Image</h2>
+
+                <button
+                    id="closeModal"
+                    class="close-btn"
+                    type="button">
+                    ✕
+                </button>
+            </div>
+
+            <input
+                type="text"
+                id="imageSearch"
+                placeholder="Search image IDs..."
+            >
+
+            <div id="imageGrid"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+const today = new Date().toISOString().split("T")[0];
+document.querySelector("input[name='date']").value = today;
+
+const modal = document.getElementById("imageModal");
+const imageGrid = document.getElementById("imageGrid");
+const imageSearch = document.getElementById("imageSearch");
+
+let images = [];
+
+//------------------------------------
+// Open Modal
+//------------------------------------
+
+document.getElementById("chooseImageBtn").addEventListener("click", async () => {
+
+    modal.classList.add("show");
+
+    if(images.length === 0){
+
+        await loadImages();
+    }
+
+});
+
+//------------------------------------
+// Close Modal
+//------------------------------------
+
+document.getElementById("closeModal").addEventListener("click", () => {
+
+    modal.classList.remove("show");
+
+});
+
+window.addEventListener("click",(e)=>{
+
+    if(e.target === modal){
+
+        modal.classList.remove("show");
+
+    }
+
+});
+
+//------------------------------------
+// Load Images
+//------------------------------------
+
+async function loadImages(){
+
+    try{
+
+        const response = await fetch("/image/alldata/50");
+
+        images = await response.json();
+
+        images.sort((a, b) => {
+            return a.uploadDate.localeCompare(b.uploadDate);
+        })
+        
+        displayImages(images);
+
+    }
+    catch(err){
+
+        console.error(err);
+
+    }
+
+}
+
+//------------------------------------
+// Display Images
+//------------------------------------
+
+function displayImages(imageList){
+
+    imageGrid.innerHTML = "";
+
+    imageList.forEach(image=>{
+
+        const card = document.createElement("div");
+        card.className = "image-card";
+        console.log(parseInt(image.uploadDate))
+
+        card.innerHTML = `
+            <img src="/image/uploads/image/${encodeURIComponent(image.id)}">
+
+            <div class="image-id">
+                ${image.id}
+            </div>
+
+            <div class="image-caption">
+                ${image.caption ?? ""}
+            </div>
+        `;
+
+        card.addEventListener("click",()=>{
+
+            document.getElementById("coverID").value = image.id;
+
+            modal.classList.remove("show");
+
+        });
+
+        imageGrid.appendChild(card);
+
+    });
+
+}
+
+//------------------------------------
+// Search
+//------------------------------------
+
+imageSearch.addEventListener("input",()=>{
+
+    const search = imageSearch.value.toLowerCase();
+
+    const filtered = images.filter(image=>{
+
+        
+        return image.id.toLowerCase().includes(search) ||
+               image.caption.toLowerCase().includes(search);
+
+    });
+
+    displayImages(filtered);
+
+});
+
+</script>
+
+
+</body>
+</html>

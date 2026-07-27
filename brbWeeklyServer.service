@@ -1,0 +1,30 @@
+[Unit]
+Description=The real BRB Weekly Node.js Web Server
+After=network.target
+
+[Service]
+Type=simple
+
+# User that should run the server
+User=admin
+Group=admin
+
+# Folder containing package.json
+WorkingDirectory=/home/jonathan/myserver
+
+# Command to start Node
+ExecStart=/home/brb-weekly/ .nvm/versions/node/v24.18.0/bin/node /home/shares/shared_folder/the-real-brb-weekly-node-server/app.js
+
+# Automatically restart if it crashes
+Restart=always
+RestartSec=5
+
+# Optional environment variables
+Environment=NODE_ENV=production
+
+# Log to systemd
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

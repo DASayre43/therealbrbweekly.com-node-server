@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global-css1.css"> 
+    <title>BRB weekly home page</title>
+   
+</head>
+<style>
+    #dual-section{
+        display: grid;
+        grid-template-areas: "reward article"; 
+    }
+
+    .card{
+    min-width: 300px;
+    justify-self: center;
+}
+    
+    @media (max-width: 768px) {
+       #dual-section{
+        grid-template-areas: "reward" "article"; 
+    } 
+    }
+</style>
+<body>
+    <%- include('global/global-navigation-drop-down.html'); -%>
+    <div class="side-content-left"></div>
+    <div class="side-content-right"></div>
+    <div class="center_content">
+        <%- include('global/global-banner.html'); -%>
+        <main>
+            <article>
+                <section class="content-section">
+                    <h3 class="content-header">Our Mission</h3>
+                    <p class="content-paragraph">
+                         BRB weekly is the news paper that will provide you with all the nonsence you know, love and want more of.
+                        Here at BRB weekly it is our mission to edicate the snips, arm the snips and reveal the truth (unlike the Rocket courier).
+                         We produce the highest qaulity of BRB weekly magizines filled with informative content, monsters and politcians. 
+                        we are way better than the rocket courier. we have politicians, exelent products and way better photo shop skills (they don't even photo shop there photos, what cheap scates!).
+                        so to be enlightened on curent events keep reading. it soops cool yall.
+                    </p>
+                </section>
+                <section id="dual-section">
+                    <section class="content-section" style="grid-area: reward;">
+                        <h3 class="content-header">Your reward</h3>
+                        <p class="content-paragraph">
+                            Congrats, you finaly got here so we now humbly bestow upon you the fish daaaaa dun dun dun don fffiiisshh YOU GET A FISH!!! Yay yay wo hoo fish.
+                        </p>
+                        <img src="/Images/fish1.gif" alt="Pixel Art" class="pixel-art" width="80%">
+                    </section>
+
+                    <section class="content-section" style="grid-area: article;">
+                        <h3 class="content-header">Check out the latest online articles</h3>
+                        <p class="content-paragraph">
+                            The latest news from the sources you trust.
+                        </p>
+                        <div id="article-holder"></div>
+                    </section>
+                </section>
+                <section class="content-section">
+                    <h3 class="content-header">Past BRB Weekly PDFs</h3>
+                    <p class="content-paragraph">
+                         an amaze colection of beutiful BRB Weeklys. just click on one to open the PDF in your browser.
+                         And don't forget you can download it right from your browser.
+                    </p>
+                    <div class="card-holder">
+                        <a href="/pdfs/BRB10.pdf" class="card" style=" background-image: url(/BRB\ Weekly\ Covers/cover10.jpg);"></a>
+                        
+                    </div>
+                    
+                </section>
+                <section class="content-section">
+                    <h3 class="content-header">send us some feedback</h3>
+                    <p class="content-paragraph">
+                         tell us how much you love brb weekly, or I gues complain about stuff...
+                    </p>
+                    <a href="/positivefeedback" style=" background-color: rgb(11, 224, 39); display: inline-block; padding: 10px; border-radius: 5px;">
+                        positive feedback</a>
+                    <a href="/negativefeedback" style="background-color: rgb(226, 12, 65); display: inline-block; padding: 10px; border-radius: 5px;">
+                        negitive feedback</a>
+                </section>
+                <section class="content-section">
+                    <h3 class="content-header">our wonderfull sponsores</h3>
+                    <p class="content-paragraph">
+                         BRB weekly is made posible with the generios contributions of these fine establishments
+                    </p>
+                    <ul class="content-list">
+                        <li>Bob Casey Bites: Bob Casey knows that pizza cereal is american</li>
+                        <li>Snake pits today: get your vary own in ground snake pit today</li>
+                        <li>Kazari's meowskin's money mix: buy it now my kittens</li>
+                        <li>Villian fox: were you can buy all your illegal nesesitys</li>
+                        <li>Ankh's ice cream: yuck's the world brats</li>
+                        <li>Rat salons: release your inner beauty and let it ingulf you.</li>
+                        <li>poeple away: are you sick of poeple in your away get poeple away now.</li>
+                        <li>X enterprises: I hate you all --X</li>
+                        <li>Moon milk: get your three dialy servings of monster milk now</li>
+                        <li>Trump: it gooooood sun</li>
+                        <li>The Boys; the Boys deal with your problems like men!!!</li>
+                        <li>and by Snips like you yes you you you; give us your money today</li>
+                    </ul>
+
+                </section>
+            </article>
+        </main>
+        <%- include('global/global-footer.html'); -%>
+    </div>
+    
+    <script src="/js/pdfCardLoader.js"
+    <script src="/js/banner1.js"></script>
+    <script src="/js/menu1.js"></script>
+    
+</body>
+</html>

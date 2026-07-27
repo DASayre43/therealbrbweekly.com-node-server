@@ -1,0 +1,22 @@
+{
+  "name": "the-real-brb-weekly-node-server",
+  "version": "1.0.0",
+  "description": "A website for the satirical news paper/magazine brb weekly.",
+  "license": "MIT",
+  "author": "Dayton Arthur Sayre",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "level": "^10.0.0",
+    "leveldown": "^6.1.1",
+    "levelup": "^5.1.1",
+    "multer": "^2.2.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1"
+  }
+}

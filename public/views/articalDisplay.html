@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>artical display</title>
+
+    <link rel="stylesheet" href="/css/global-css1.css"> 
+</head>
+<body>
+
+   <%- include('global/global-navigation-drop-down.html'); -%>
+    <div class="side-content-left"></div>
+    <div class="side-content-right"></div>
+    <div class="center_content">
+        <%- include('global/global-banner.html'); -%>
+        <main>
+            
+            <article>
+                <section class="nightly-content-section">
+                    <h3 class="nightly-content-header" id="nightly-content-header">put your money in a yes acount today!!!</h3>
+                    <p class="nightly-content-paragraph" id="nightly-content-paragraph">
+                        Newest tonight its the grand opening of Yes Bank. Sleezy MC Collar owner of Yes Industriese siad quote 
+                            "Yes bank is the first ever bank founded by theives and robers for theives and robers so you can trust that your money will be vary vary safe with us bro eee ooo yo ho".
+                            And Sam the yes Box siad quote " we'll use your money so you don't have to you Spinch eateres ho ho ho ho ee oo". at Yes bank we'll invest your money in big pizzas for us yoll, yes boxs, 
+                            yes box's dental health and funding our criminal activities yo ho yes bro so say yes to yes bank or we will send yes box to you in the mail he will eat your fingres.
+                        so to sign up just go to YesWeStealYourMoney.com now now now!
+
+                    </p>
+                    <img class="nightly-img" src="/Images/caroling_thumbnail.jpeg" id="nightly-img">
+                </section>
+            </article>
+        
+        </main>
+        <%- include('global/global-footer.html'); -%>
+    </div>
+    <script src="/js/banner1.js"></script>
+    <script src="/js/menu1.js"></script>
+    <!-- <script src="js/adds.js"></script> -->
+
+    <script>
+        //------------------------------------
+        // Article ID (provided by EJS)
+        //------------------------------------
+
+        const articleID = "<%= id %>";
+
+        //------------------------------------
+        // Load Existing Article
+        //------------------------------------
+
+        loadArticle();
+
+        async function loadArticle() {
+
+            try {
+
+                const response = await fetch(`/articles/article/${encodeURIComponent(articleID)}`);
+
+                if (!response.ok) {
+                    throw new Error(`Server returned ${response.status}`);
+                }
+
+                const article = await response.json();
+
+                // Populate form
+                document.getElementById("nightly-content-header").innerHTML =
+                    article.title ?? "";
+
+                document.getElementById("nightly-content-paragraph").innerHTML =
+                    article.articleText ?? "";
+
+                const nightlyImg = document.getElementById("nightly-img") 
+                nightlyImg.src  =  `/image/uploads/image/${article.coverID}`;
+
+            }
+            catch (err) {
+
+                console.error("Failed to load article:", err);
+
+                alert("Unable to load article.");
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+</html>

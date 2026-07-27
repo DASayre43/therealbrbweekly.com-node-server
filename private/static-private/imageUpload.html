@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image upload</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <h1>Image upload</h1>
+
+    <div class="section">
+
+        <h2>upload</h2>
+
+        <div id="edit">
+
+            <form action="image/upload" method="POST" enctype="multipart/form-data">
+        <input
+            type="file"
+            name="image"
+           
+            required
+        >
+
+        <input
+            type="text"
+            name="caption"
+        >
+
+        <input type="date" name="date">
+
+        <button type="submit">
+            Upload
+        </button>
+    </form>
+            
+
+        </div>
+
+    </div>
+
+    <script>
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('appointmentDate').value = today;
+    </script>
+
+
+</body>
+</html>

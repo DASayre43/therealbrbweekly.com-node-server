@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= documentName %></title>
+
+    <link rel="stylesheet" href="/css/global-css1.css"> 
+</head>
+<style>
+
+    #I-frame{
+        
+        aspect-ratio: 1/1; 
+    }
+
+    a.special{
+        background-color: #777777;
+        display: inline-block;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+
+    @media (max-width: 700px)
+    {
+        .nightly-content-header{
+        font-size: large;
+        }
+    }
+
+</style>
+<body>
+
+   <%- include('global/global-navigation-drop-down.html'); -%>
+    <div class="side-content-left"></div>
+    <div class="side-content-right"></div>
+    <div class="center_content">
+        <%- include('global/global-banner.html'); -%>
+        <main>
+            
+            <article>
+                <section class="nightly-content-section">
+                    <h3 class="nightly-content-header" id="nightly-content-header"><%= documentName %></h3>
+                    <p class="nightly-content-paragraph" id="nightly-content-paragraph">
+                        
+                        <%= Intro %>
+                        <br>
+                        <a href="/documents/document/<%- id %>" class="special">larger version</a>
+                    </p>
+                   <p class="nightly-content-img"> <%= uploadDate %> </p>
+                </section>
+                <section>
+                    <iframe src="/documents/document/<%- id %>" id="I-frame" width="100%" height="1200px"></iframe>
+                </section>
+            </article>
+        
+        </main>
+        <%- include('global/global-footer.html'); -%>
+    </div>
+    <script src="/js/banner1.js"></script>
+    <script src="/js/menu1.js"></script>
+    <!-- <script src="js/adds.js"></script> -->
+
+    <script>
+        //------------------------------------
+        // Article ID (provided by EJS)
+        //------------------------------------
+
+        // const pdfID = "";
+        // const pdfMetaData = ""
+        // console.log(JSON.parse(pdfMetaData));
+
+        //------------------------------------
+        // Load Existing Article
+        //------------------------------------
+
+        // loadArticle();
+
+        // async function loadArticle() {
+
+        //     try {
+
+        //         const response = await fetch(`/articles/article/${encodeURIComponent(pdfID)}`);
+
+        //         if (!response.ok) {
+        //             throw new Error(`Server returned ${response.status}`);
+        //         }
+
+        //         const article = await response.json();
+
+        //         // Populate form
+        //         document.getElementById("nightly-content-header").innerHTML =
+        //             article.title ?? "";
+
+        //         document.getElementById("nightly-content-paragraph").innerHTML =
+        //             article.articleText ?? "";
+
+        //         const nightlyImg = document.getElementById("nightly-img") 
+        //         nightlyImg.src  =  `/image/uploads/image/${article.coverID}`;
+
+        //     }
+        //     catch (err) {
+
+        //         console.error("Failed to load article:", err);
+
+        //         alert("Unable to load article.");
+
+        //     }
+
+        // }
+
+    </script>
+
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 # therealbrbweekly.com-node-server
 I wrote this node server to handle the back end and frontend services for therealbrbweekly.com.
+BRB Weekly is a satorical newspaper writen by my younger sister you can check out the deployed website and her work at therealbrbweekly.com.
 the server is built around the concept of splitting the destructive and non destructive operations of a restful API between the local and public networks,
 This made it much faster for me to code this project because I did not have to set up a full authentication system.  
 I should point out that this is not a very secure way of doing things if you were to deploy this server on a public network like a business network,
